@@ -88,7 +88,6 @@ function averageGrade(grades) {
     }
     let avg = total / grades.length
 }
-
 console.log(averageGrade(grades))
 console.log(averageGrade([6, 4, 5]))
 console.log(averageGrade([8, 9, 4, 6, 10]))
