@@ -2,19 +2,34 @@
 // maar ook een manier moeten vinden om hetgeen dat je verzamelt ergens te bundelen. Op deze manier zul je ontdekken hoe je omgaat met scope. Pak vooral het hoofdstuk op EdHub over for-loops er nog eens bij!
 // Tip: je mag hier geen ingebouwde object methoden gebruiken, dus daar hoef je niet naar te kijken.
 
-const grades = [9, 8, 5, 7, 7, 4, 9, 8, 8, 3, 6, 8, 5, 6];
+
 
 /* Opdracht  1: Cum Laude */
 
 /* 1a: Script schrijven  */
 // De administratie moet weten hoeveel studenten er dit blok cum laude zijn afgestudeerd (8 of hoger). Daar moeten namelijk speciale diploma's voor besteld worden.
 // Schrijf de stapjes om dit te kunnen checken eerst uit en vraag jezelf de volgende dingen af:
-// * Hoe kan ik iedere waarde van de array checken op deze conditie?
+// * Hoe kan ik iedere waarde van de array checken op deze conditie? =>
 // * Hoe zorg ik ervoor dat dit ook werkt wanneer de array 100 entries bevat?
 // * Hoe zorgt ik ervoor dat wanneer ik een cijfer tegenkom die aan de conditie voldoet, ik dit ergens kan bijhouden?
 // Log het antwoord in de terminal.
-
 // ---- Verwachte uitkomst: 6
+
+//
+const grades = [9, 8, 5, 7, 7, 4, 9, 8, 8, 3, 6, 8, 5, 6];
+
+function cumLaudeStudentsQty(grades) {
+    let cumLaudeStudents = 0;
+    for (let i = 0; i < grades.length; i++) {
+        if (grades[i] >= 8) {
+            cumLaudeStudents = cumLaudeStudents + 1;
+        }
+    }
+    return cumLaudeStudents
+}
+
+console.log(cumLaudeStudentsQty(grades))
+/
 
 
 /*  1b: Omschrijven tot een herbruikbare functie   */
@@ -27,22 +42,35 @@ const grades = [9, 8, 5, 7, 7, 4, 9, 8, 8, 3, 6, 8, 5, 6];
 // cumLaude([6, 4, 5]) geeft 0
 // cumLaude([8, 9, 4, 6, 10]) geeft 3
 
-
-
+/
+// //Aljona's notitie: het antwoord is reeds in 1a verwerkt (dat doe je of in const grade = een nieuw array te zetten)
+console.log(cumLaudeStudentsQty(grades))
+console.log(cumLaudeStudentsQty([6, 4, 5]))
+console.log(cumLaudeStudentsQty([8, 9, 4, 6, 10]))
 
 /* Opdracht  2: Gemiddeld cijfer */
 
 /* 2a: Script schrijven  */
 // De studenten-administratie moet ieder blok opnieuw berekenen wat het gemiddelde eindcijfer is, maar we beginnen met de grades array van hierboven.
 // Schrijf de stapjes om dit te kunnen berekenen eerst uit en vraag jezelf de volgende dingen af:
-// * Hoe wordt een gemiddelde berekend?
-// * Wat moet ik verzamelen uit de array van cijfers om uiteindelijk een gemiddelde te kunnen berekenen?
+// * Hoe wordt een gemiddelde berekend? => opgetelede bij elkaar cijfers van de array / aantal indexen uit array
+// * Wat moet ik verzamelen uit de array van cijfers om uiteindelijk een gemiddelde te kunnen berekenen? => opgetelede bij elkaar cijfers van de array / grades.lengh+1
 // * Hoe zorgt ik ervoor dat ik alle waardes uit de array kan langslopen, ook als de array wel 100 entries zou bevatten?
 // Log het antwoord in de terminal.
 
 // ---- Verwachte uitkomst: 6.642857142857143
 
+const grades = [9, 8, 5, 7, 7, 4, 9, 8, 8, 3, 6, 8, 5, 6];
+let total = 0
+for (let i = 0; i <grades.length ; i++) {
+    total += grades[i] // op zo'n manier worden objecten uit array bij elkaar opgeteld
+}
+let avg = total / grades.length
 
+console.log(avg)
+
+
+// console.log()
 /* 2b: Omschrijven tot een herbruikbare functie */
 // Schrijf een functie genaamd averageGrade, die een array van cijfers verwacht (zoals grades) en het gemiddelde cijfer teruggeeft. Gebruik hiervoor jouw antwoord van 2a.
 // Zorg ervoor dat jouw functie ook werkt als we een andere array willen checken, zoals bijvoorbeeld: [6, 4, 5] of [8, 9, 4, 6, 10].
@@ -53,11 +81,32 @@ const grades = [9, 8, 5, 7, 7, 4, 9, 8, 8, 3, 6, 8, 5, 6];
 // averageGrade([6, 4, 5]) geeft xxxx
 // averageGrade([8, 9, 4, 6, 10]) geeft xxxx
 
+function averageGrade(grades) {
+    let total = 0;
+    for (let i = 0; i <grades.length; i++) {
+        total += grades[i]
+    }
+    let avg = total / grades.length
+}
+
+console.log(averageGrade(grades))
+console.log(averageGrade([6, 4, 5]))
+console.log(averageGrade([8, 9, 4, 6, 10]))
+
+
 
 /* 2c: Afronden op twee decimalen */
 // Zorg ervoor dat het gemiddelde cijfer dat wordt teruggegeven uit de functie netjes wordt afgerond op twee decimalen.
 // Tip: Google is your best friend!
-
+function highestGradeMethode(input) {
+    let largestNumber = 0
+    for (let i = 0; i < input.length; i++) {
+        if (input[i] > largestNumber) {
+            largestNumber = input[i];
+        }
+    }
+    return largestNumber
+}
 
 
 
