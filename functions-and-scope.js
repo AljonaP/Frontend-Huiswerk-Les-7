@@ -186,7 +186,7 @@ function highestGradeMethode(input) {
     }
     return largestNumber
 }
-console.log(highestGradeMethode([9, 8, 5, 7, 7, 4, 9, 8, 8, 3, 6, 8, 5, 6, 7])
+console.log(highestGradeMethode([9, 8, 5, 7, 7, 4, 9, 8, 8, 3, 6, 8, 5, 6, 7]))
 console.log(highestGradeMethode([6, 4, 5]))
 console.log(highestGradeMethode([8, 9, 4, 6, 10]))
 
