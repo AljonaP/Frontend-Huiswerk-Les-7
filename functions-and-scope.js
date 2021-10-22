@@ -9,13 +9,32 @@
 /* 1a: Script schrijven  */
 // De administratie moet weten hoeveel studenten er dit blok cum laude zijn afgestudeerd (8 of hoger). Daar moeten namelijk speciale diploma's voor besteld worden.
 // Schrijf de stapjes om dit te kunnen checken eerst uit en vraag jezelf de volgende dingen af:
-// * Hoe kan ik iedere waarde van de array checken op deze conditie? =>
-// * Hoe zorg ik ervoor dat dit ook werkt wanneer de array 100 entries bevat?
-// * Hoe zorgt ik ervoor dat wanneer ik een cijfer tegenkom die aan de conditie voldoet, ik dit ergens kan bijhouden?
+// * Hoe kan ik iedere waarde van de array checken op deze conditie? => via for-loop
+// * Hoe zorg ik ervoor dat dit ook werkt wanneer de array 100 entries bevat? =>
+// AP VRAAG: * Hoe zorgt ik ervoor dat wanneer ik een cijfer tegenkom die aan de conditie voldoet, ik dit ergens kan bijhouden?
 // Log het antwoord in de terminal.
 // ---- Verwachte uitkomst: 6
 
-//
+
+const grades = [9, 8, 5, 7, 7, 4, 9, 8, 8, 3, 6, 8, 5, 6];
+let cumLaudeStudents1a = 0;
+for (let i = 0; i < grades.length; i++) {
+    if (grades[i] >=8) {
+        cumLaudeStudents1a = cumLaudeStudents1a + 1
+    }
+}
+console.log(cumLaudeStudents1a)
+
+/* 1b: Omschrijven tot een herbruikbare functie   */
+// Schrijf een functie genaamd cumLaude, die een array van cijfers verwacht (zoals grades) en het aantal Cum laude studenten teruggeeft. Gebruik hiervoor jouw antwoord van 1a.
+// Zorg ervoor dat jouw functie ook werkt als we een andere array met eindcijfers willen checken, zoals bijvoorbeeld: [6, 4, 5] of [8, 9, 4, 6, 10].
+// Log het antwoord in de terminal.
+
+// ---- Verwachte uitkomsten:
+// cumLaude(grades) geeft 6
+// cumLaude([6, 4, 5]) geeft 0
+// cumLaude([8, 9, 4, 6, 10]) geeft 3
+
 const grades = [9, 8, 5, 7, 7, 4, 9, 8, 8, 3, 6, 8, 5, 6];
 
 function cumLaudeStudentsQty(grades) {
@@ -28,22 +47,6 @@ function cumLaudeStudentsQty(grades) {
     return cumLaudeStudents
 }
 
-console.log(cumLaudeStudentsQty(grades))
-/
-
-
-/*  1b: Omschrijven tot een herbruikbare functie   */
-// Schrijf een functie genaamd cumLaude, die een array van cijfers verwacht (zoals grades) en het aantal Cum laude studenten teruggeeft. Gebruik hiervoor jouw antwoord van 1a.
-// Zorg ervoor dat jouw functie ook werkt als we een andere array met eindcijfers willen checken, zoals bijvoorbeeld: [6, 4, 5] of [8, 9, 4, 6, 10].
-// Log het antwoord in de terminal.
-
-// ---- Verwachte uitkomsten:
-// cumLaude(grades) geeft 6
-// cumLaude([6, 4, 5]) geeft 0
-// cumLaude([8, 9, 4, 6, 10]) geeft 3
-
-/
-// //Aljona's notitie: het antwoord is reeds in 1a verwerkt (dat doe je of in const grade = een nieuw array te zetten)
 console.log(cumLaudeStudentsQty(grades))
 console.log(cumLaudeStudentsQty([6, 4, 5]))
 console.log(cumLaudeStudentsQty([8, 9, 4, 6, 10]))
@@ -60,17 +63,17 @@ console.log(cumLaudeStudentsQty([8, 9, 4, 6, 10]))
 
 // ---- Verwachte uitkomst: 6.642857142857143
 
+
 const grades = [9, 8, 5, 7, 7, 4, 9, 8, 8, 3, 6, 8, 5, 6];
-let total = 0
-for (let i = 0; i <grades.length ; i++) {
-    total += grades[i] // op zo'n manier worden objecten uit array bij elkaar opgeteld
+
+let sum = 0;
+for (let i=0; i<grades.length; i++) {
+    sum = sum + grades[i] //the same you can write as sum += grades[i]
 }
-let avg = total / grades.length
+let avgGrades = sum / grades.length;
+console.log(avgGrades)
 
-console.log(avg)
 
-
-// console.log()
 /* 2b: Omschrijven tot een herbruikbare functie */
 // Schrijf een functie genaamd averageGrade, die een array van cijfers verwacht (zoals grades) en het gemiddelde cijfer teruggeeft. Gebruik hiervoor jouw antwoord van 2a.
 // Zorg ervoor dat jouw functie ook werkt als we een andere array willen checken, zoals bijvoorbeeld: [6, 4, 5] of [8, 9, 4, 6, 10].
@@ -81,31 +84,47 @@ console.log(avg)
 // averageGrade([6, 4, 5]) geeft xxxx
 // averageGrade([8, 9, 4, 6, 10]) geeft xxxx
 
+
 function averageGrade(grades) {
-    let total = 0;
-    for (let i = 0; i <grades.length; i++) {
+    let total = 0
+    for (let i = 0; i < grades.length ; i++) {
         total += grades[i]
     }
     let avg = total / grades.length
+    // toFixed() returns string as it is a string formatting method
+    // using + we kind are doing math operation and type is changed to number
+    return avg
 }
-console.log(averageGrade(grades))
+
+let avg = averageGrade([9, 8, 5, 7, 7, 4, 9, 8, 8, 3, 6, 8, 5, 6, 7])
+
+console.log(avg)
 console.log(averageGrade([6, 4, 5]))
 console.log(averageGrade([8, 9, 4, 6, 10]))
+
 
 
 
 /* 2c: Afronden op twee decimalen */
 // Zorg ervoor dat het gemiddelde cijfer dat wordt teruggegeven uit de functie netjes wordt afgerond op twee decimalen.
 // Tip: Google is your best friend!
-function highestGradeMethode(input) {
-    let largestNumber = 0
-    for (let i = 0; i < input.length; i++) {
-        if (input[i] > largestNumber) {
-            largestNumber = input[i];
-        }
+
+function averageGrade(grades) {
+    let total = 0
+    for (let i = 0; i < grades.length ; i++) {
+        total += grades[i]
     }
-    return largestNumber
+    let avg = total / grades.length
+    // toFixed() returns string as it is a string formatting method
+    // using + we kind are doing math operation and type is changed to number
+    return +avg.toFixed(2)
 }
+
+let avg = averageGrade([9, 8, 5, 7, 7, 4, 9, 8, 8, 3, 6, 8, 5, 6, 7])
+
+console.log(avg)
+console.log(averageGrade([6, 4, 5]))
+console.log(averageGrade([8, 9, 4, 6, 10]))
 
 
 
@@ -120,6 +139,17 @@ function highestGradeMethode(input) {
 
 // ---- Verwachte uitkomst: 9
 
+const grades = [9, 8, 5, 7, 7, 4, 9, 8, 8, 3, 6, 8, 5, 6, 7]
+let largestNumber = 0
+for (let i = 0; i < grades.length; i++) {
+    if (grades[i] > largestNumber) {
+        largestNumber = grades[i];
+    }
+}
+let hightestGradeMethode = largestNumber
+console.log(hightestGradeMethode)
+
+
 
 /* 3b: Omschrijven tot een herbruikbare functie */
 // Schrijf een functie genaamd highestGrade, die een array van cijfers verwacht (zoals grades) en het hoogste cijfer teruggeeft. Gebruik hiervoor jouw antwoord van 3a.
@@ -130,3 +160,33 @@ function highestGradeMethode(input) {
 // highestGrade(grades) geeft 9
 // highestGrade([6, 4, 5]) geeft 6
 // highestGrade([8, 9, 4, 6, 10]) geeft 10
+
+function highestGrade (input) {
+    let largestNumber = 0
+    for (let i = 0; i < input.length; i++) {
+        if (input[i] > largestNumber) {
+            largestNumber = input[i];
+        }
+    }
+    return largestNumber
+}
+console.log(highestGrade([9, 8, 5, 7, 7, 4, 9, 8, 8, 3, 6, 8, 5, 6, 7]))
+console.log(highestGrade([6, 4, 5]))
+console.log(highestGrade([8, 9, 4, 6, 10]))
+//Voorbeeld: https://jsfiddle.net/b0hjvn6s/?fbclid=IwAR22aearqaGwukzZULM0_KnPXXioVJfnyh850_lSiHySKDl2iH01pRs_kxY
+
+
+
+function highestGradeMethode(input) {
+    let largestNumber = 0
+    for (let i = 0; i < input.length; i++) {
+        if (input[i] > largestNumber) {
+            largestNumber = input[i];
+        }
+    }
+    return largestNumber
+}
+console.log(highestGradeMethode([9, 8, 5, 7, 7, 4, 9, 8, 8, 3, 6, 8, 5, 6, 7])
+console.log(highestGradeMethode([6, 4, 5]))
+console.log(highestGradeMethode([8, 9, 4, 6, 10]))
+

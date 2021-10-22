@@ -72,7 +72,6 @@ console.log(typeOfEmail("a.wiersma@outlook.com"))
 // console.log(typeOfEmail("a.wiersma@outlook.com"))
 
 
-
 /* Opdracht  3 */
 // Schrijf een functie genaamd checkEmailValidity, die een emailadres verwacht en checkt of het emailadres valide is. De functie returned true of false, afhankelijk van de uitkomst.
 // Een emailadres is valide wanneer:
